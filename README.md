@@ -21,3 +21,4 @@ On linux, it may very slow that build environment is ready
 because uid,gid of user inside the docker image changes 
 
 to uid,gid of host
+(uid and gid of user inside the docker image is each 1000)
