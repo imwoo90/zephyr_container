@@ -2,8 +2,6 @@ version: "3" # 버전 지정
 
 services: # 컨테이너 설정
   zephyr: 
-    # build: .docker
     image: imwoo/zephyr_3.1.99_arm:1.0.0
-    platform: linux/amd64
     stdin_open: true
     tty: true
