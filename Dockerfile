@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Search for branch https://github.com/zephyrproject-rtos/zephyr
-ARG ZEPHYR_BRANCH=backport-52519-to-v2.7-branch
+ARG ZEPHYR_BRANCH=v3.3.0-rc2
 ENV ZEPHYR_SDK_VER 0.15.2
 
 ARG USERNAME=zephyr
@@ -46,8 +46,8 @@ WORKDIR /home/${USERNAME}/zephyrproject
 RUN /home/${USERNAME}/.local/bin/west init --mr ${ZEPHYR_BRANCH}
 RUN /home/${USERNAME}/.local/bin/west update
 RUN /home/${USERNAME}/.local/bin/west zephyr-export
-RUN sudo apt install -y python3-progress python3-psutil python3-cbor python3-capstone python3-intervaltree python3-future
-RUN pip3 install --user clang-format==14.0.6
+RUN sudo apt install -y python3-progress python3-psutil python3-cbor python3-capstone python3-intervaltree python3-future gcc g++
+# RUN pip3 install --user clang-format==15.0.0
 RUN pip3 install --user -r ~/zephyrproject/zephyr/scripts/requirements.txt
 
 WORKDIR /home/${USERNAME}
