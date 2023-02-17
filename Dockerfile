@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Search for branch https://github.com/zephyrproject-rtos/zephyr
-ARG ZEPHYR_BRANCH=v3.3.0-rc2
+ARG ZEPHYR_BRANCH=v3.3.0-rc3
 ENV ZEPHYR_SDK_VER 0.15.2
 
 ARG USERNAME=zephyr
