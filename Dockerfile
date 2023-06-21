@@ -2,8 +2,8 @@ FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Search for branch https://github.com/zephyrproject-rtos/zephyr
-ARG ZEPHYR_BRANCH=v3.3.0-rc3
-ENV ZEPHYR_SDK_VER 0.15.2
+ARG ZEPHYR_BRANCH=v3.4.0
+ENV ZEPHYR_SDK_VER 0.16.1
 
 ARG USERNAME=zephyr
 ARG USER_UID=1000
@@ -51,8 +51,8 @@ RUN sudo apt install -y python3-progress python3-psutil python3-cbor python3-cap
 RUN pip3 install --user -r ~/zephyrproject/zephyr/scripts/requirements.txt
 
 WORKDIR /home/${USERNAME}
-RUN wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_SDK_VER}/zephyr-sdk-${ZEPHYR_SDK_VER}_linux-$(arch)_minimal.tar.gz
-RUN tar xvf zephyr-sdk-${ZEPHYR_SDK_VER}_linux-$(arch)_minimal.tar.gz
+RUN wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_SDK_VER}/zephyr-sdk-${ZEPHYR_SDK_VER}_linux-$(arch)_minimal.tar.xz
+RUN tar xvf zephyr-sdk-${ZEPHYR_SDK_VER}_linux-$(arch)_minimal.tar.xz
 RUN bash ./zephyr-sdk-${ZEPHYR_SDK_VER}/setup.sh -h -c -t arm-zephyr-eabi
 
 RUN echo . ${HOME}/zephyrproject/zephyr/zephyr-env.sh >> ~/.bashrc
