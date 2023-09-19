@@ -59,8 +59,8 @@ RUN echo . ${HOME}/zephyrproject/zephyr/zephyr-env.sh >> ~/.bashrc
 RUN echo . ${HOME}/zephyr-sdk-${ZEPHYR_SDK_VER}/environment-setup-$(arch)-pokysdk-linux >> ~/.bashrc
 
 # install nrf command line tools
-RUN wget https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-23-0/nrf-command-line-tools_10.23.0_arm64.deb
-RUN sudo apt install -y udev 
+RUN wget https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-23-0/nrf-command-line-tools_10.23.0_$(dpkg --print-architecture).deb
+RUN sudo apt install -y udev
 # RUN sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-render0 libxcb-shape0 libxcb-util1 libxcb-xkb1 libxkbcommon-x11-0
-RUN sudo dpkg -i nrf-command-line-tools_10.23.0_arm64.deb
-CMD ["sudo apt install /opt/nrf-command-line-tools/share/JLink_Linux_V788j_arm64.deb --fix-broken -y"]
+RUN sudo dpkg -i nrf-command-line-tools_10.23.0_$(dpkg --print-architecture).deb
+CMD ["sudo apt install /opt/nrf-command-line-tools/share/JLink_Linux_V788j_$(dpkg --print-architecture).deb --fix-broken -y"]
